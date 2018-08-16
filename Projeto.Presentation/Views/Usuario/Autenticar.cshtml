@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE-edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale-1" />
+    <title>Autenticar - Login</title>
+
+    <!-- Folha de estilo CSS-->
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/css/signin.css" rel="stylesheet" />
+
+    <script src="~/Scripts/bootstrap.js"></script>
+</head>
+<body>
+    <div class="container"> 
+        <div class="form-signin" style="background: #42dea4;">
+            <h2 class="text-center text-uppercase">Area Restrita</h2>
+            <br />
+            <!-- definir a classe de modelo -->
+            @model Projeto.Presentation.Models.UsuarioAutenticarViewModel
+
+            <!-- criando o formulario -->
+            @using (Html.BeginForm())
+            {
+                <div class="text-danger">
+                    @Html.ValidationMessageFor(model => model.Login)
+                </div>
+                @Html.TextBoxFor(model => model.Login, new { @class = "form-control", placeholder = "Digite o seu login" })
+                <br />
+                <div class="text-danger">
+                    @Html.ValidationMessageFor(model => model.Senha)
+                </div>
+                @Html.PasswordFor(model => model.Senha, new { @class = "form-control", placeholder = "Digite a sua senha" })
+                <br />
+                <div class="text-danger text-center">
+                    @ViewBag.Mensagem
+                </div>
+                <br />
+                <input type="submit" name="btnLogin" value="Logar" class="btn btn-success btn-block">
+
+                <div class="row text-center" style="margin-top: 20px; margin-left:auto; margin-right:auto; display:block;">
+                    <h6 class="text-center">Você ainda não possui uma conta?</h6>
+                    <a class="text-center" href="/Usuario/CriarConta">CADASTRE - SE</a>
+                </div>
+            }
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE-edge" />
+    <meta name="viewport" content="width=device-width, initial-scale-1" />
+    <title>CriarConta - Cadastrar</title>
+
+    <!-- Folha de estilo CSS-->
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/css/signin.css" rel="stylesheet" />
+
+    <script src="~/Scripts/bootstrap.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="form-signin" style="background: #42dea4;">
+            <h2 class="text-center text-uppercase" style="font-size: 29px;">Cadastrar Usuário</h2>
+            <br />
+            <!-- definir a classe de modelo -->
+            @model Projeto.Presentation.Models.UsuarioCriarContaViewModel
+
+            <!-- criando o formulario -->
+            @using (Html.BeginForm())
+            {
+                <div class="text-danger">
+                    @Html.ValidationMessageFor(model => model.Nome)
+                </div>
+                @Html.TextBoxFor(model => model.Nome, new { @class = "form-control", placeholder = "Digite o seu nome e sobrenome" })
+                <br />
+
+                <div class="text-danger">
+                    @Html.ValidationMessageFor(model => model.Login)
+                </div>
+                @Html.TextBoxFor(model => model.Login, new { @class = "form-control", placeholder = "Digite o seu login" })
+                <br />
+
+                <div class="text-danger">
+                    @Html.ValidationMessageFor(model => model.Senha)
+                </div>
+                @Html.PasswordFor(model => model.Senha, new { @class = "form-control", placeholder = "Digite a sua senha" })
+                <br />
+
+                <div class="text-danger">
+                    @Html.ValidationMessageFor(model => model.ConfirmSenha)
+                </div>
+                @Html.PasswordFor(model => model.ConfirmSenha, new { @class = "form-control", placeholder = "Confirme sua senha" })
+                <br />
+                <div class="text-danger text-center">
+                    @ViewBag.Mensagem
+                </div>
+                <br />
+                <input type="submit" name="btnCadUsuario" value="Cadastrar" class="btn btn-success btn-block">
+
+                <div class="row text-center" style="margin-top: 20px; margin-left:auto; margin-right:auto;display:block;">
+                    Lembrou? <a href="/Usuario/Autenticar"> CLIQUE AQUI </a> para logar
+                </div>
+            }
+        </div>
+    </div>
+</body>
+</html>
